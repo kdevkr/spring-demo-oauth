@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+    id 'war'
+    id 'io.freefair.lombok' version '6.3.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations.all {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-crypto'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    implementation 'org.springframework.session:spring-session-jdbc'
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
+    implementation 'org.postgresql:postgresql:42.4.1'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.71'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // [CAUTION] Spring Security OAuth2 is EOL.
+//    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.8'
+
+    implementation 'org.springframework.security:spring-security-oauth2-authorization-server:0.3.1'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

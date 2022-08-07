@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    embedded-database-connection: none
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:src/main/resources/db/database.db
+
+  session:
+    jdbc:
+      platform: sqlite
+      initialize-schema: always

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    embedded-database-connection: none
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mambo
+    username: mambo
+    password: mambo
+
+  session:
+    jdbc:
+      platform: postgresql
+      initialize-schema: always
